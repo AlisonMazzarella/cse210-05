@@ -67,7 +67,7 @@ root                                (project root folder)
 
 **Required Technologies:**
 
-- Python 3.8.0 or greater
+- Python 3.8 or greater
 - Pygame
 
 ## **Authors: (Team E)**
