@@ -41,7 +41,7 @@ _The project files are the following:_
 - +-- main.py 
 - +-- action.py
 - +-- background.py 
-- +-- game_over.py
+- +-- point.py
 - +-- cycle1.png
 - +-- cycle2.png 
 - +-- background.png
