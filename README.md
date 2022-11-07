@@ -25,8 +25,8 @@ Cycle Game
 **Project Structure:**
 _The project files are the following:_
 
-- +-- keyboard_input_one.py 
-- +-- keyboard_input_two.py
+- +-- keyboard_input.py 
+- +-- video_input.py
 - +-- player_one_movement.py 
 - +-- player_two_movement.py 
 - +-- player_one.py 
