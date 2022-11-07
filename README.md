@@ -55,7 +55,7 @@ _The project files are organized in folders as follows:_
 ```
 root                                (project root folder)
 +-- images                          (images for game)
-+-- sound                                 (sound for game)  
++-- sound                           (sound for game)  
 +-- keyboard_support                (specific game classes)
 +-- sprites                         (specific game classes)
 +-- director.py                     (specific game classes)
