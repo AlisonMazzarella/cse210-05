@@ -63,8 +63,8 @@ root
 
 **Required Technologies:**
 
-- Python 3.8 or greater
-- Raylib
+- python 3.8 or greater
+- pyray
 
 ## **Authors: (Team E)**
 
