@@ -53,16 +53,18 @@ _The project files are the following:_
 _The project files are organized in folders as follows:_
 
 ```
-root                                (project root folder)
-+-- images                          (images for game)
-+-- sound                           (sound for game)  
-+-- keyboard_support                (specific game classes)
-+-- sprites                         (specific game classes)
-+-- director.py                     (specific game classes)
-+-- draw_screen.py                  (specific game classes)
-+-- main.py                         (entry point for program)
-+-- score.py                        (specific game classes)
-+-- README.md                       (general info)
+root                               
++-- images                         
++-- sound                           
++-- casting
++-- directing
++-- scripting 
++-- services 
++-- shared
++-- pycache
++-- game
++-- cycle                      
++-- README.md                       
 ```
 
 **Required Technologies:**
