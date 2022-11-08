@@ -25,27 +25,24 @@ Cycle Game
 **Project Structure:**
 _The project files are the following:_
 
-- +-- keyboard_input.py 
-- +-- video_input.py
-- +-- player_one_movement.py 
-- +-- player_two_movement.py 
-- +-- player_one.py 
-- +-- player_two.py 
-- +-- director.py 
-- +-- draw_screen.py 
-- +-- draw_players.py 
-- +-- color.py 
-- +-- sound.py 
-- +-- handle_collision.py 
-- +-- score.py
 - +-- main.py 
-- +-- action.py
-- +-- background.py 
+- +-- constants.py
+- +-- actor.py 
+- +-- cast.py 
+- +-- cycles.py
+- +-- score.py 
+- +-- object.py 
+- +-- director.py 
+- +-- action.py 
+- +-- control_actors_action.py 
+- +-- draw_actors_action.py 
+- +-- handle_collisions_action.py 
+- +-- move_actors_action.py
+- +-- script.py 
+- +-- keyboard_service.py
+- +-- video_service.py 
 - +-- point.py
-- +-- cycle1.png
-- +-- cycle2.png 
-- +-- background.png
-- +-- pycache
+- +-- color.py
 - +-- README.md
 
 ---
@@ -53,15 +50,12 @@ _The project files are the following:_
 _The project files are organized in folders as follows:_
 
 ```
-root                               
-+-- images                         
-+-- sound                           
+root                                                         
 +-- casting
 +-- directing
 +-- scripting 
 +-- services 
 +-- shared
-+-- pycache
 +-- game
 +-- cycle                      
 +-- README.md                       
@@ -70,7 +64,7 @@ root
 **Required Technologies:**
 
 - Python 3.8 or greater
-- Pygame
+- Raylib
 
 ## **Authors: (Team E)**
 
