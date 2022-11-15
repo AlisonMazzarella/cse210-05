@@ -42,7 +42,7 @@ class Director:
         """
         actions = script.get_actions(group)    
         for action in actions:
-            action.execute(cast, script, self._is_game_over)   
+            # action.execute(cast, script, action._is_game_over)   
 
             if isinstance(action, HandleCollisionsAction):
                 self._game_is_over = action.get_is_game_over()

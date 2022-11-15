@@ -20,7 +20,7 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction1 = Point(0, constants.CELL_SIZE, 0)
+        self._direction1 = Point(constants.CELL_SIZE, 0)
         self.direction2 = Point(0, -1 * constants.CELL_SIZE)
         self.is_game_over = False
 

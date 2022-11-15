@@ -2,7 +2,6 @@ import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
 
-
 class Cycles(Actor):
     """
     A vehicle players move on.
@@ -55,15 +54,15 @@ class Cycles(Actor):
         x = 0.0
         y = 0.0
 
-        if (self.cycle_color == constants.YELLOW):
-            x = int(20)
-            y = int(constants.MAX_Y / 2)
-        else: 
-            x = int(-20)
-            y = int(constants.MAX_Y / 2)
+        # if (self.cycle_color == constants.YELLOW):
+        #     x = int(20)
+        #     y = int(constants.MAX_Y / 2)
+        # else: 
+        #     x = int(-20)
+        #     y = int(constants.MAX_Y / 2)
 
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
+        #     x = int(constants.MAX_X / 2)
+        #     y = int(constants.MAX_Y / 2)
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)

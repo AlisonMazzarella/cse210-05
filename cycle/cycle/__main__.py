@@ -18,28 +18,33 @@ from game.shared.point import Point
 
 def main():
     #create the cast
+    cast = Cast()
 
     # Create two players, get their position and color
+    cast.add_actor("cycle1", Cycles())
+    cast.add_actor("cycle2", Cycles())
+    cast.add_actor("scores", Score())
+    
     cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2)))
     cycle1 = (Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
-    cycle.set_color(constants.GREEN)
-    cycle1.set_color(constants.RED)
+    # cycle.set_color(constants.GREEN)
+    # cycle1.set_color(constants.RED)
 
 
-    # player 1 
-    cast = Cast()
-    score1 = Score()
-    score1.add_points(5)
-    cast.add_actor("cycle", cycle)
-    cast.add_actor("score1", score1)
-    score1.set_position(Point(constants.MAX_X+150, 10))
+    # # player 1 
+    # cast = Cast()
+    # score1 = Score()
+    # score1.add_points(5)
+    # cast.add_actor("cycle", cycle)
+    # cast.add_actor("score1", score1)
+    # score1.set_position(Point(constants.MAX_X+150, 10))
 
-    # player 2 
-    score2 = Score()
-    score2.add_points(5)
-    cast.add_actor("cycle1", cycle1)
-    cast.add_actor("score2", score2)
-    score2.set_position(Point(constants.MAX_X-200, 10))
+    # # player 2 
+    # score2 = Score()
+    # score2.add_points(5)
+    # cast.add_actor("cycle1", cycle1)
+    # cast.add_actor("score2", score2)
+    # score2.set_position(Point(constants.MAX_X-200, 10))
    
     # start the game
     keyboard_service = KeyboardService()
