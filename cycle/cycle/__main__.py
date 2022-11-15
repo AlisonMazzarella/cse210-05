@@ -1,9 +1,9 @@
 import constants
 
 from game.casting.cast import Cast
-from game.casting.object import Object 
+from game.casting.object import Object #changed from game.casting.food import food
 from game.casting.score import Score
-from game.casting.cycles import Cycles
+from game.casting.cycles import Cycles #changed from game.casting.snake import snake
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -20,7 +20,8 @@ def main():
     #create the cast
 
     # Create two players, get their position and color
-    cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2)))
+    #Added code to create another player, get their position, and manipulate their cycle colors, all this is not included in snake
+    cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2))) 
     cycle1 = (Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
     cycle.set_color(constants.GREEN)
     cycle1.set_color(constants.RED)
@@ -28,12 +29,13 @@ def main():
 
     # player 1 
     cast = Cast()
-    score1 = Score()
-    score1.add_points(5)
-    cast.add_actor("cycle", cycle)
-    cast.add_actor("score1", score1)
-    score1.set_position(Point(constants.MAX_X+150, 10))
+    score1 = Score() #Added this, not in snake
+    score1.add_points(5) #Added this, not in snake
+    cast.add_actor("cycle", cycle) #changed from foods to cycle
+    cast.add_actor("score1", score1) #changed from scores to score1
+    score1.set_position(Point(constants.MAX_X+150, 10)) #added location points
 
+    #added all of this for second cycle, not included in snake
     # player 2 
     score2 = Score()
     score2.add_points(5)
