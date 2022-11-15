@@ -2,12 +2,13 @@ import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
 
+#changed snake.py into cycles.py 
 
-class Cycles(Actor):
+class Cycles(Actor): #changed from Snake(Actor)
     """
-    A vehicle players move on.
+    A vehicle players move on. #removed long and limbless reptile. 
     
-    The responsibility of Cycle is to move itself.
+    The responsibility of Cycle is to move itself. #Everywhere snake was referenced has been replaced by cycle
 
     Attributes:
         _points (int): The number of points the object is worth.
@@ -52,8 +53,8 @@ class Cycles(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = 0.0
-        y = 0.0
+        x = 0.0 #changed from x = int(constants.MAX_X / 2)
+        y = 0.0 #changed from y = int(constants.MAX_Y / 2)
 
         if (self.cycle_color == constants.YELLOW):
             x = int(20)
