@@ -26,6 +26,7 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        #everything changed from snake to cycle and then duplicated to represent two players, two cycles, and two scores
         score1 = cast.get_actors("scores")
         score2 = cast.get_actors("scores")
         object = cast.get_first_actor("objects")
