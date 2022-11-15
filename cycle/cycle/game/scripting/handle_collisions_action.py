@@ -30,21 +30,24 @@ class HandleCollisionsAction(Action):
             self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
-    def _handle_object_collision(self, cast):
-        """Updates the score nd moves the food if the snake collides with the food.
+    def _handle_object_collision(self, cast): #changed from _handle_food_collision
+        """Updates the score and moves the object if the snake collides with the object.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
         score = cast.get_first_actor("scores")
-        object = cast.get_first_actor("objects")
-        cycles = cast.get_first_actor("cycles")
+        object = cast.get_first_actor("objects") #changed from food
+        cycles = cast.get_first_actor("cycles") #changed from snake
+        
+        #added conditional if statement
         if not self._is_game_over:
             cycle1 = cycles[0]
             cycle2 = cycles[1]
         head1 = cycle1.get_segments()[0]
         head2 = cycle2.get_segments90[1]
 
+        #had to duplicate for another head to account for second cycle
         if head1.get_position().equals(object.get_position()):
             points = object.get_points()
             score.add_points(points)
@@ -60,6 +63,7 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
+        #changed snake to cycles and separated cycle and cycles for two different players 
         cycles = cast.get_first_actor("cycles")
         cycle1 = cycles[0]
         head = cycle1.get_segments()[0]
@@ -75,7 +79,7 @@ class HandleCollisionsAction(Action):
             for segment in segments2:
                 if head.get_position().equals(segment.get_position()):
                     self._is_game_over = True
-        
+        #duplicated from first to represent second cycle
         for segment in segments2:
             if head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
@@ -90,6 +94,7 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
+            #added information for second player, everything here was not included in snake
             cycles = cast.get_actors("cycles")
             cycle1 = cycles[0]
             segments = cycle1.get_segments()
