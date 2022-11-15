@@ -9,7 +9,7 @@ class MoveActorsAction(Action):
     than zero.
     """
 
-    def execute(self, cast, script, is_game_over):
+    def execute(self, cast, script, is_game_over): #added is_game_over
         """Executes the move actors action.
 
         Args:
