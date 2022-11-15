@@ -64,6 +64,7 @@ class Cast:
             result = self._actors[group][0]
         return result
 
+    #Added this for second cycle, not included in snake game
     def get_second_actor(self, group):
         """Gets the second actor in the given group.
         
