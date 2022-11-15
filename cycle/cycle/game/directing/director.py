@@ -1,4 +1,4 @@
-from game.scripting.handle_collisions_action import HandleCollisionsAction
+from game.scripting.handle_collisions_action import HandleCollisionsAction #added, ,not included in snake
 
 class Director:
     """A person who directs the game. 
@@ -16,7 +16,7 @@ class Director:
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
-        self._game_is_over = False 
+        self._game_is_over = False #added, not included in snake
         
     def start_game(self, cast, script):
         """Starts the game using the given cast and script. Runs the main game loop.
@@ -42,7 +42,7 @@ class Director:
         """
         actions = script.get_actions(group)    
         for action in actions:
-            action.execute(cast, script, self._is_game_over)   
+            action.execute(cast, script, self._is_game_over)   #added section self._is_game_over
 
-            if isinstance(action, HandleCollisionsAction):
+            if isinstance(action, HandleCollisionsAction): #added collision section, not included in snake
                 self._game_is_over = action.get_is_game_over()
