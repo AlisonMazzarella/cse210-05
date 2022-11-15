@@ -42,7 +42,7 @@ class Director:
         """
         actions = script.get_actions(group)    
         for action in actions:
-            action.execute(cast, script, self._is_game_over)   #added section self._is_game_over
+            action.execute(cast, script, self._game_is_over)   #added section self._is_game_over
 
             if isinstance(action, HandleCollisionsAction): #added collision section, not included in snake
                 self._game_is_over = action.get_is_game_over()

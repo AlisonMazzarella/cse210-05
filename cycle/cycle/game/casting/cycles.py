@@ -56,7 +56,7 @@ class Cycles(Actor): #changed from Snake(Actor)
         x = 0.0 #changed from x = int(constants.MAX_X / 2)
         y = 0.0 #changed from y = int(constants.MAX_Y / 2)
 
-        if (self.cycle_color == constants.YELLOW):
+        if (super().get_color() == constants.YELLOW):
             x = int(20)
             y = int(constants.MAX_Y / 2)
         else: 

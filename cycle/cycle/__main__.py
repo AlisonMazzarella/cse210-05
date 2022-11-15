@@ -21,27 +21,36 @@ def main():
 
     # Create two players, get their position and color
     #Added code to create another player, get their position, and manipulate their cycle colors, all this is not included in snake
-    cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2))) 
-    cycle1 = (Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
-    cycle.set_color(constants.GREEN)
-    cycle1.set_color(constants.RED)
+    # cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2))) 
+    cycle1 = Cycles()
+    # cycle1.set_position(Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2)))
+    cycle1.set_position(Point(0, 0))
+
+    cycle2 = Cycles()
+    # cycle2.set_position(Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
+    cycle2.set_position(Point(constants.MAX_X, constants.MAX_Y))
+
+    cycle1.set_color(constants.GREEN)
+    cycle2.set_color(constants.RED)
 
 
     # player 1 
     cast = Cast()
     score1 = Score() #Added this, not in snake
     score1.add_points(5) #Added this, not in snake
-    cast.add_actor("cycle", cycle) #changed from foods to cycle
-    cast.add_actor("score1", score1) #changed from scores to score1
+    cast.add_actor(constants.CYCLE_GROUP, cycle1) #changed from foods to cycle
+    cast.add_actor(constants.SCORE_GROUP, score1) #changed from scores to score1
     score1.set_position(Point(constants.MAX_X+150, 10)) #added location points
 
     #added all of this for second cycle, not included in snake
     # player 2 
     score2 = Score()
     score2.add_points(5)
-    cast.add_actor("cycle1", cycle1)
-    cast.add_actor("score2", score2)
+    cast.add_actor(constants.CYCLE_GROUP, cycle2)
+    cast.add_actor(constants.SCORE_GROUP, score2)
     score2.set_position(Point(constants.MAX_X-200, 10))
+
+    cast.add_actor(constants.OBJECT_GROUP, Object())
    
     # start the game
     keyboard_service = KeyboardService()

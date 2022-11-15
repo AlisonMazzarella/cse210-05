@@ -20,66 +20,48 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction1 = Point(0, constants.CELL_SIZE, 0) #added self.direction1
-        self.direction2 = Point(0, -1 * constants.CELL_SIZE) #added self.direction2
+        self._direction1 = Point(0, constants.CELL_SIZE) #added self.direction1
+        self._direction2 = Point(0, -1 * constants.CELL_SIZE) #added self.direction2
         self.is_game_over = False #added self.is_game_over
 
-    def execute1(self, cast, script, is_game_over): #added is_game_over
+    def execute(self, cast, script, is_game_over): #added is_game_over
         """Executes the control actors action.
 
         Args:
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        cycles = cast.get_actors("cycles") #added, not included in snake
+        cycles = cast.get_actors(constants.CYCLE_GROUP) #added, not included in snake
 
         # left
         if self._keyboard_service.is_key_down('a'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+            self._direction1 = Point(-constants.CELL_SIZE, 0)
+        # left
+        if self._keyboard_service.is_key_down('j'):
+            self._direction2 = Point(-constants.CELL_SIZE, 0)
         
         # right
         if self._keyboard_service.is_key_down('d'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+            self._direction1 = Point(constants.CELL_SIZE, 0)
+        # right
+        if self._keyboard_service.is_key_down('l'):
+            self._direction2 = Point(constants.CELL_SIZE, 0)
         
         # up
         if self._keyboard_service.is_key_down('w'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+            self._direction1 = Point(0, -constants.CELL_SIZE)
+        # up
+        if self._keyboard_service.is_key_down('i'):
+            self._direction2 = Point(0, -constants.CELL_SIZE)
         
         # down
         if self._keyboard_service.is_key_down('s'):
-            self._direction = Point(0, constants.CELL_SIZE)
+            self._direction1 = Point(0, constants.CELL_SIZE)
+        # down
+        if self._keyboard_service.is_key_down('k'):
+            self._direction2 = Point(0, constants.CELL_SIZE)
         
         cycle1 = cycles[0]
         cycle1.turn_head(self._direction1)
-
-
-        #added all of this for def execute2 for second cycle
-        def execute2(self, cast, script, is_game_over):
-            """Executes the control actors action.
-
-            Args:
-                cast (Cast): The cast of Actors in the game.
-                script (Script): The script of Actions in the game.
-            """
-            cycles = cast.get_actors("cycles")
-
-            # left
-            if self._keyboard_service.is_key_down('j'):
-                self._direction2 = Point(-constants.CELL_SIZE, 0)
-        
-            # right
-            if self._keyboard_service.is_key_down('l'):
-                self._direction2 = Point(constants.CELL_SIZE, 0)
-        
-            # up
-            if self._keyboard_service.is_key_down('i'):
-                self._direction2 = Point(0, -constants.CELL_SIZE)
-        
-            # down
-            if self._keyboard_service.is_key_down('k'):
-                self._direction2 = Point(0, constants.CELL_SIZE)
-        
-            cycle2 = cycles[1]
-            cycle2.turn_head(self._direction2)
-    
-
+        cycle2 = cycles[1]
+        cycle2.turn_head(self._direction2)

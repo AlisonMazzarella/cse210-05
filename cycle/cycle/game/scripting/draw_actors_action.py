@@ -1,4 +1,5 @@
 from game.scripting.action import Action
+import constants
 
 
 class DrawActorsAction(Action):
@@ -19,7 +20,7 @@ class DrawActorsAction(Action):
         """
         self._video_service = video_service
 
-    def execute(self, cast, script):
+    def execute(self, cast, script, is_game_over):
         """Executes the draw actors action.
 
         Args:
@@ -27,14 +28,14 @@ class DrawActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         #everything changed from snake to cycle and then duplicated to represent two players, two cycles, and two scores
-        score1 = cast.get_actors("scores")
-        score2 = cast.get_actors("scores")
-        object = cast.get_first_actor("objects")
+        score1 = cast.get_actors(constants.SCORE_GROUP)[0]
+        score2 = cast.get_actors(constants.SCORE_GROUP)[1]
+        object = cast.get_first_actor(constants.OBJECT_GROUP)
 
-        cycles = cast.get_actors("cycles")
+        cycles = cast.get_actors(constants.CYCLE_GROUP)
         cycle1 = cycles[0]
         cycle2 = cycles[1]
-        if not self.is_game_over:
+        if not is_game_over:
             cycle1.grow_trail(1)
             cycle2.grow_trail(1)
         cycle1_segments = cycle1.get_segments()

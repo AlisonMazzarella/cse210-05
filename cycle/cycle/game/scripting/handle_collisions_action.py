@@ -18,7 +18,7 @@ class HandleCollisionsAction(Action):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
 
-    def execute(self, cast, script):
+    def execute(self, cast, script, is_game_over):
         """Executes the handle collisions action.
 
         Args:
@@ -36,19 +36,19 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
-        object = cast.get_first_actor("objects") #changed from food
-        cycles = cast.get_first_actor("cycles") #changed from snake
+        score = cast.get_first_actor(constants.SCORE_GROUP)
+        object = cast.get_first_actor(constants.OBJECT_GROUP) #changed from food
+        cycles = cast.get_actors(constants.CYCLE_GROUP) #changed from snake
         
         #added conditional if statement
         if not self._is_game_over:
             cycle1 = cycles[0]
             cycle2 = cycles[1]
         head1 = cycle1.get_segments()[0]
-        head2 = cycle2.get_segments90[1]
+        head2 = cycle2.get_segments()[1]
 
         #had to duplicate for another head to account for second cycle
-        if head1.get_position().equals(object.get_position()):
+        if head1.get_position() == object.get_position():
             points = object.get_points()
             score.add_points(points)
             object.reset()
@@ -64,7 +64,7 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         #changed snake to cycles and separated cycle and cycles for two different players 
-        cycles = cast.get_first_actor("cycles")
+        cycles = cast.get_actors(constants.CYCLE_GROUP)
         cycle1 = cycles[0]
         head = cycle1.get_segments()[0]
         segments = cycle1.get_segments()[1:]
@@ -95,10 +95,10 @@ class HandleCollisionsAction(Action):
         """
         if self._is_game_over:
             #added information for second player, everything here was not included in snake
-            cycles = cast.get_actors("cycles")
+            cycles = cast.get_actors(constants.CYCLE_GROUP)
             cycle1 = cycles[0]
             segments = cycle1.get_segments()
-            object = cast.get_first_actor("objects")
+            object = cast.get_first_actor(constants.OBJECT_GROUP)
 
             cycle2 = cycles[1]
             segments2 = cycle2.get_segments()
