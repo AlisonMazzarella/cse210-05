@@ -21,14 +21,8 @@ def main():
 
     # Create two players, get their position and color
     #Added code to create another player, get their position, and manipulate their cycle colors, all this is not included in snake
-    # cycle = (Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2))) 
-    cycle1 = Cycles()
-    # cycle1.set_position(Point(int(constants.MAX_X - 645), int(constants.MAX_Y / 2)))
-    cycle1.set_position(Point(0, 0))
-
-    cycle2 = Cycles()
-    # cycle2.set_position(Point(int(constants.MAX_X - 300), int(constants.MAX_Y / 2)))
-    cycle2.set_position(Point(constants.MAX_X, constants.MAX_Y))
+    cycle1 = Cycles(int(constants.MAX_X - 645), int(constants.MAX_Y / 2))
+    cycle2 = Cycles(int(constants.MAX_X - 300), int(constants.MAX_Y / 2))
 
     cycle1.set_color(constants.GREEN)
     cycle2.set_color(constants.RED)

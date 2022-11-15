@@ -13,10 +13,12 @@ class Cycles(Actor): #changed from Snake(Actor)
     Attributes:
         _points (int): The number of points the object is worth.
     """
-    def __init__(self):
+    def __init__(self, x, y):
         super().__init__()
         self._segments = []
-        self._prepare_body()
+        self._x = x
+        self._y = y
+        self._prepare_body(self._x, self._y)
 
     def get_segments(self):
         return self._segments
@@ -52,18 +54,10 @@ class Cycles(Actor): #changed from Snake(Actor)
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
-    def _prepare_body(self):
-        x = 0.0 #changed from x = int(constants.MAX_X / 2)
-        y = 0.0 #changed from y = int(constants.MAX_Y / 2)
+    def _prepare_body(self, x, y):
 
         if (super().get_color() == constants.YELLOW):
             x = int(20)
-            y = int(constants.MAX_Y / 2)
-        else: 
-            x = int(-20)
-            y = int(constants.MAX_Y / 2)
-
-            x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
 
         for i in range(constants.CYCLE_LENGTH):
