@@ -5,9 +5,9 @@ from game.shared.point import Point
 
 class ControlActorsAction(Action):
     """
-    An input action that controls the snake.
+    An input action that controls the cycles. #changed all references to snake to cycles
     
-    The responsibility of ControlActorsAction is to get the direction and move the snake's head.
+    The responsibility of ControlActorsAction is to get the direction and move the cycles.
 
     Attributes:
         _keyboard_service (KeyboardService): An instance of KeyboardService.
@@ -20,18 +20,18 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction1 = Point(0, constants.CELL_SIZE, 0)
-        self.direction2 = Point(0, -1 * constants.CELL_SIZE)
-        self.is_game_over = False
+        self._direction1 = Point(0, constants.CELL_SIZE, 0) #added self.direction1
+        self.direction2 = Point(0, -1 * constants.CELL_SIZE) #added self.direction2
+        self.is_game_over = False #added self.is_game_over
 
-    def execute1(self, cast, script, is_game_over):
+    def execute1(self, cast, script, is_game_over): #added is_game_over
         """Executes the control actors action.
 
         Args:
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        cycles = cast.get_actors("cycles")
+        cycles = cast.get_actors("cycles") #added, not included in snake
 
         # left
         if self._keyboard_service.is_key_down('a'):
@@ -53,6 +53,7 @@ class ControlActorsAction(Action):
         cycle1.turn_head(self._direction1)
 
 
+        #added all of this for def execute2 for second cycle
         def execute2(self, cast, script, is_game_over):
             """Executes the control actors action.
 
