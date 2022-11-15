@@ -3,21 +3,22 @@ import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
 
+#changed file name from food.py to object.py 
 
-class Object(Actor):
+class Object(Actor): #changed from Food(Actor)
     """
-    An object in the game to catch.
+    An object in the game to catch. #everywhere you saw food referenced in snake has been changed to object. 
     
     The responsibility of Object is to select a random position and points that it's worth.
 
     Attributes:
-        _points (int): The number of points the food is worth.
+        _points (int): The number of points the object is worth.
     """
     def __init__(self):
         "Constructs a new Object."
         super().__init__()
         self._points = 0
-        self.set_text("*")
+        self.set_text("*") #changed the symbol from @ to *
         self.set_color(constants.RED)
         self.reset()
         
