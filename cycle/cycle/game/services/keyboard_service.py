@@ -21,6 +21,7 @@ class KeyboardService:
         self._keys['s'] = pyray.KEY_S
         self._keys['d'] = pyray.KEY_D
 
+        #keys were already listed in snake, assigned them specifically to player 2
         #set for player 2
         self._keys['i'] = pyray.KEY_I
         self._keys['j'] = pyray.KEY_J
