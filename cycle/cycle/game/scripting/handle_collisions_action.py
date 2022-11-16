@@ -31,6 +31,7 @@ class HandleCollisionsAction(Action):
             self._handle_object_collision(cast)
             self._handle_game_over(cast)
 
+    #This function is not working
     def _handle_object_collision(self, cast): #changed from _handle_food_collision
         """Updates the score and moves the object if the snake collides with the object.
         
@@ -74,6 +75,7 @@ class HandleCollisionsAction(Action):
         head2 = cycle2.get_segments()[1]
         segments2 = cycle2.get_segments()[1:]
         
+        #This is weird, let's check on it
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
