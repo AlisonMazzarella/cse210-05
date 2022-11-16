@@ -16,7 +16,7 @@ class HandleCollisionsAction(Action):
 
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
-        self._is_game_over = False
+        self._is_game_over = False 
 
     def execute(self, cast, script, is_game_over):
         """Executes the handle collisions action.
@@ -25,9 +25,10 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
+        self._handle_segment_collision(cast) #P: changed this from outside the if statment
+
         if not self._is_game_over:
             self._handle_object_collision(cast)
-            self._handle_segment_collision(cast)
             self._handle_game_over(cast)
 
     def _handle_object_collision(self, cast): #changed from _handle_food_collision
