@@ -27,7 +27,7 @@ class HandleCollisionsAction(Action):
         """
         self._handle_segment_collision(cast) #P: changed this from outside the if statment
 
-        if not self._is_game_over:
+        if not is_game_over:
             self._handle_object_collision(cast)
             self._handle_game_over(cast)
 
@@ -46,18 +46,18 @@ class HandleCollisionsAction(Action):
         if not self._is_game_over:
             cycle1 = cycles[0]
             cycle2 = cycles[1]
-        head1 = cycle1.get_segments()[0]
-        head2 = cycle2.get_segments()[1]
+            head1 = cycle1.get_segments()[0]
+            head2 = cycle2.get_segments()[0]
 
-        #had to duplicate for another head to account for second cycle
-        if head1.get_position() == object.get_position():
-            points = object.get_points()
-            score.add_points(points)
-            object.reset()
-        elif head2.get_position().equals(object.get_position()):
-            points = object.get_points()
-            score.add_points(points)
-            object.reset()
+            #had to duplicate for another head to account for second cycle
+            if head1.get_position().equals(object.get_position()):
+                points = object.get_points()
+                score.add_points(points)
+                object.reset()
+            elif head2.get_position().equals(object.get_position()):
+                points = object.get_points()
+                score.add_points(points)
+                object.reset()
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the cycles collides with one of its segments.
@@ -72,23 +72,23 @@ class HandleCollisionsAction(Action):
         segments = cycle1.get_segments()[1:]
 
         cycle2 = cycles[1]
-        head2 = cycle2.get_segments()[1]
+        head2 = cycle2.get_segments()[0]
         segments2 = cycle2.get_segments()[1:]
         
         #This is weird, let's check on it
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
-            for segment in segments2:
-                if head.get_position().equals(segment.get_position()):
-                    self._is_game_over = True
+        for segment in segments2:
+            if head.get_position().equals(segment.get_position()):
+                self._is_game_over = True
         #duplicated from first to represent second cycle
         for segment in segments2:
             if head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
-            for segment in segments:
-                if head2.get_position().equals(segment.get_position()):
-                    self._is_game_over = True
+        for segment in segments:
+            if head2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the cycle trail and object white if the game is over.
