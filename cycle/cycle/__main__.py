@@ -27,7 +27,7 @@ def main():
     cycle1.set_color(constants.GREEN)
     cycle2.set_color(constants.RED)
 
-
+    #I think the problem with the score might be here, because it already adds 5 points.
     # player 1 
     cast = Cast()
     score1 = Score() #Added this, not in snake
