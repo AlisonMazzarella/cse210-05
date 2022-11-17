@@ -71,3 +71,4 @@ root
 - Mazzarella-Woelzl, Alison Reed (maz12005@byui.edu)
 - Saenz, Paula (sae21002@byui.edu)
 - Diab, Garren Mark (dia22004@byui.edu)
+- Ogboanoh, Richard Oshiomole Ephraim (ogb22001@byui.edu)
