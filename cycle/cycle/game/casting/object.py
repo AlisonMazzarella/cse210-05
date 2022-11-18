@@ -31,10 +31,10 @@ class Object(Actor): #changed from Food(Actor)
         position = position.scale(constants.CELL_SIZE)
         self.set_position(position)
         
-    def get_points(self):
-        """Gets the points the food is worth.
+    # def get_points(self):
+    #     """Gets the points the food is worth.
         
-        Returns:
-            points (int): The points the food is worth.
-        """
-        return self._points
+    #     Returns:
+    #         points (int): The points the food is worth.
+    #     """
+    #     return self._points

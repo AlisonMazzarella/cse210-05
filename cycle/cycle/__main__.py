@@ -28,25 +28,25 @@ def main():
 
     cycle1.set_color(constants.GREEN)
     cycle2.set_color(constants.RED)
+    object = Object()
 
     # I think the problem with the score might be here, because it already adds 5 points.
-    # I don't know if this fixes problem, I can't really test it because my system graphics card
-    # can't run the game so I need someone to test it out
     # player 1
     cast = Cast()
-    score1 = Score()  # Added this, not in snake
-    score1.add_points(5)  # Added this, not in snake
+    score1 = Score()
+    if cycle1 == object: # Added this, not in snake
+        score1.add_points(5)  # Added this, not in snake
     # changed from foods to cycle
     cast.add_actor(constants.CYCLE_GROUP, cycle1)
     # changed from scores to score1
     cast.add_actor(constants.SCORE_GROUP, score1)
-    score1.set_position(Point(constants.MAX_X+150, 10)
-                        )  # added location points
+    score1.set_position(Point(constants.MAX_X+150, 10))  # added location points
 
     # added all of this for second cycle, not included in snake
     # player 2
     score2 = Score()
-    score2.add_points(5)
+    if cycle2 == object:
+        score2.add_points(5)
     cast.add_actor(constants.CYCLE_GROUP, cycle2)
     cast.add_actor(constants.SCORE_GROUP, score2)
     score2.set_position(Point(constants.MAX_X-200, 10))
