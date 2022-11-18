@@ -34,7 +34,7 @@ def main():
     # can't run the game so I need someone to test it out
     # player 1
     cast = Cast()
-    score1 = Score(0)  # Added this, not in snake
+    score1 = Score()  # Added this, not in snake
     score1.add_points(5)  # Added this, not in snake
     # changed from foods to cycle
     cast.add_actor(constants.CYCLE_GROUP, cycle1)
@@ -45,7 +45,7 @@ def main():
 
     # added all of this for second cycle, not included in snake
     # player 2
-    score2 = Score(0)
+    score2 = Score()
     score2.add_points(5)
     cast.add_actor(constants.CYCLE_GROUP, cycle2)
     cast.add_actor(constants.SCORE_GROUP, score2)
