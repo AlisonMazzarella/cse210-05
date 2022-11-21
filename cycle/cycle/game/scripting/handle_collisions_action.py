@@ -17,6 +17,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False 
+        self._winning_player = 0
 
     def execute(self, cast, script, is_game_over):
         """Executes the handle collisions action.
@@ -26,38 +27,9 @@ class HandleCollisionsAction(Action):
             script (Script): The script of Actions in the game.
         """
         self._handle_segment_collision(cast) #P: changed this from outside the if statment
-
-        if not is_game_over:
-            self._handle_object_collision(cast)
-            self._handle_game_over(cast)
+        self._handle_game_over(cast)
 
 
-    def _handle_object_collision(self, cast): #changed from _handle_food_collision
-        """Updates the score and moves the object if the snake collides with the object.
-        
-        Args:
-            cast (Cast): The cast of Actors in the game.
-        """
-        score = cast.get_first_actor(constants.SCORE_GROUP)
-        object = cast.get_first_actor(constants.OBJECT_GROUP) #changed from food
-        cycles = cast.get_actors(constants.CYCLE_GROUP) #changed from snake
-        
-        #added conditional if statement
-        if not self._is_game_over:
-            cycle1 = cycles[0]
-            cycle2 = cycles[1]
-            head1 = cycle1.get_segments()[0]
-            head2 = cycle2.get_segments()[0]
-
-            #had to duplicate for another head to account for second cycle
-            if head1.get_position().equals(object.get_position()):
-                points = object.get_points()
-                score.add_points(points)
-                object.reset()
-            elif head2.get_position().equals(object.get_position()):
-                points = object.get_points()
-                score.add_points(points)
-                object.reset()
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the cycles collides with one of its segments.
@@ -66,6 +38,7 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         #changed snake to cycles and separated cycle and cycles for two different players 
+        
         cycles = cast.get_actors(constants.CYCLE_GROUP)
         cycle1 = cycles[0]
         head = cycle1.get_segments()[0]
@@ -78,16 +51,20 @@ class HandleCollisionsAction(Action):
 
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
+                self._winning_player = 1
                 self._is_game_over = True
         for segment in segments2:
             if head.get_position().equals(segment.get_position()):
+                self._winning_player = 1
                 self._is_game_over = True
         #duplicated from first to represent second cycle
         for segment in segments2:
             if head2.get_position().equals(segment.get_position()):
+                self._winning_player = 0
                 self._is_game_over = True
         for segment in segments:
             if head2.get_position().equals(segment.get_position()):
+                self._winning_player = 0
                 self._is_game_over = True
         
     def _handle_game_over(self, cast):
@@ -96,6 +73,8 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
+        scores = cast.get_actors(constants.SCORE_GROUP)
+
         if self._is_game_over:
             #added information for second player, everything here was not included in snake
             cycles = cast.get_actors(constants.CYCLE_GROUP)
@@ -112,6 +91,7 @@ class HandleCollisionsAction(Action):
 
             message = Actor()
             message.set_text("Game Over!")
+            scores[self._winning_player].add_points(5)
             message.set_position(position)
             cast.add_actor("messages", message)
 

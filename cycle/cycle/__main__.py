@@ -33,9 +33,7 @@ def main():
     # I think the problem with the score might be here, because it already adds 5 points.
     # player 1
     cast = Cast()
-    score1 = Score()
-    if cycle1 == object: # Added this, not in snake
-        score1.add_points(5)  # Added this, not in snake
+    score1 = Score() # Added this, not in snake
     # changed from foods to cycle
     cast.add_actor(constants.CYCLE_GROUP, cycle1)
     # changed from scores to score1
@@ -45,8 +43,6 @@ def main():
     # added all of this for second cycle, not included in snake
     # player 2
     score2 = Score()
-    if cycle2 == object:
-        score2.add_points(5)
     cast.add_actor(constants.CYCLE_GROUP, cycle2)
     cast.add_actor(constants.SCORE_GROUP, score2)
     score2.set_position(Point(constants.MAX_X-200, 10))

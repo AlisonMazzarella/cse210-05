@@ -1,4 +1,5 @@
 from game.scripting.handle_collisions_action import HandleCollisionsAction #added, ,not included in snake
+import time
 
 class Director:
     """A person who directs the game. 
@@ -27,9 +28,14 @@ class Director:
         """
         self._video_service.open_window()
         while self._video_service.is_window_open():
-            self._execute_actions("input", cast, script)
-            self._execute_actions("update", cast, script)
-            self._execute_actions("output", cast, script)
+            if self._game_is_over ==  False:
+                self._execute_actions("input", cast, script)
+                self._execute_actions("update", cast, script)
+                self._execute_actions("output", cast, script)
+            else:
+                time.sleep(3)
+                self._video_service.close_window()
+                
         self._video_service.close_window()
 
     def _execute_actions(self, group, cast, script):
